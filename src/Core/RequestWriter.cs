@@ -6,6 +6,7 @@ public interface IRequestWriter
     void Write(Request req);
 }
 
+[Local, Test]
 public class LocalRequestWriter : IRequestWriter
 {
     public int WriteCount { get; private set; }
@@ -16,6 +17,7 @@ public class LocalRequestWriter : IRequestWriter
     }
 }
 
+[Lambda]
 public class LambdaRequestWriter : IRequestWriter
 {
     public void Write(Request req)

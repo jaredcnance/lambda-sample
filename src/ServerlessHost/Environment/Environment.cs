@@ -1,4 +1,4 @@
-public enum ExecutionEnvironment
+public enum Environment
 {
     Local = 0,
     Test = 1,

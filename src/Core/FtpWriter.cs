@@ -7,6 +7,7 @@ public interface IFtpWriter
     Task WriteAsync(Stream stream, string name);
 }
 
+[Lambda]
 public class FtpWriter : IFtpWriter
 {
     public Task WriteAsync(Stream stream, string name)
@@ -15,6 +16,7 @@ public class FtpWriter : IFtpWriter
     }
 }
 
+[Local, Test]
 public class FileSystemWriter : IFtpWriter
 {
     public Task WriteAsync(Stream stream, string name)
