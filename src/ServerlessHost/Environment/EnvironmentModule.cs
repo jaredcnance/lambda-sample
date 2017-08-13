@@ -42,11 +42,12 @@ public class EnvironmentModule : Autofac.Module
 
     private void RegisterTypesWithAttribute<T>(ContainerBuilder builder) where T : Attribute
     {
-        var assembly = typeof(LocalAttribute).GetTypeInfo().Assembly;
-
-        builder.RegisterAssemblyTypes(assembly)
-            .Where(t => t.GetTypeInfo().IsDefined(typeof(T)))
-            .AsImplementedInterfaces();
+        foreach(var assembly in ServiceProvider.ServiceAssemblies)
+        {
+            builder.RegisterAssemblyTypes(assembly)
+                .Where(t => t.GetTypeInfo().IsDefined(typeof(T)))
+                .AsImplementedInterfaces();
+        }
     }
 
     private Environment GetEnvironment()
